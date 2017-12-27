@@ -1,0 +1,22 @@
+{
+  "name": "qt-kyc-network",
+  "version": "0.0.1",
+  "description": "This is a hyperledger sample for kyc",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "khaja",
+  "email": "shaik.khaja.ibrahim@live.in",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "composer-admin": "latest",
+    "composer-client": "latest",
+    "composer-common": "latest",
+    "composer-connector-embedded": "latest",
+    "chai": "latest",
+    "eslint": "latest",
+    "istanbul": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  }
+}

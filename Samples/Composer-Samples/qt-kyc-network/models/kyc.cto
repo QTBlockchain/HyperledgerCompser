@@ -1,0 +1,79 @@
+/**
+ * This is a model class for kyc (Know your customer)
+ */
+
+namespace org.qt.blockchain.hyperledger.kyc
+
+concept Address {
+  o String FlatNo
+  o String BuildingName
+  o String Street
+  o String Area
+  o String City
+  o String State
+  o String Country
+  o String PinCode
+  o String LandMark
+}
+
+concept PersonalIdentifier {
+  o String IdentificationCard
+  o String Identifier
+  o String IssuingAuthority
+}
+
+concept ContactInformation {
+  o String emailId
+  o String mobileNumber
+  o String AlternativeMobileNumber
+  o Address permanentAddress
+  o Address currentAddress
+}
+
+
+abstract participant User identified by userId {
+  o String userId
+  o ContactInformation contactInfo
+  o DateTime DateOfBirth
+  o PersonalIdentifier[] identifiers
+  
+}
+
+participant Student extends User {
+  o DateTime JoiningDate
+  
+}
+
+/**
+* User Responsible for registering student Info
+*/
+participant Registrar extends User {
+}
+
+
+participant Faculty extends  User {
+}
+
+asset StudentInformation identified by informationId {
+  o String informationId
+  --> Student student
+  --> Registrar registrar
+  o Boolean isVerified default=false  
+}
+
+asset FacultyInformation identified by informationId {
+  o String informationId
+  --> Faculty Faculty
+  --> Registrar registrar
+  o Boolean isVerified default=false  
+}
+
+transaction RegisterStudentKyc {
+  o String StudentId
+  --> StudentInformation information
+}
+
+transaction RegisterFacultyKyc {
+  o String facultyId
+  --> FacultyInformation information
+}

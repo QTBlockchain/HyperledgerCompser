@@ -1,0 +1,53 @@
+/*
+* RULES ARE PROCESSED TOP TO BOTTOM
+*/
+rule NetworkAdminUser {
+  description: "Description of the NetworkAdminRule ACL rule"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "**"
+  action: ALLOW
+}
+
+rule SystemAcl {
+  description: "Description of the System ACL rule"
+  participant: "org.hyperledger.composer.system.Participant"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+rule StudentKYC {
+  description: "Description of the Student rule"
+  participant: "org.qt.blockchain.hyperledger.kyc.Student"
+  operation: READ
+  resource: "org.qt.blockchain.hyperledger.kyc.StudentInformation"
+  action: ALLOW
+}
+
+rule StudentOwnKyc {
+  description: "Description of the Student ACL rule"
+  participant(s): "org.qt.blockchain.hyperledger.kyc.Student"
+  operation: ALL
+  resource(r): "org.qt.blockchain.hyperledger.kyc.StudentInformation"
+  condition: (s.getIdentifier() === r.student.getIdentifier())
+  action: ALLOW
+}
+
+rule RegistrarKYC {
+  description: "Description of the Registrar ACL rule"
+  participant: "org.qt.blockchain.hyperledger.kyc.Registrar"
+  operation: ALL
+  resource: "org.qt.blockchain.hyperledger.kyc.*"
+  action: ALLOW
+}
+
+

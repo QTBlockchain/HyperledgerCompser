@@ -1,0 +1,27 @@
+/**
+* This is a model file for the bike sale
+**/
+
+namespace org.qt.blockchain.hyperleder.samples
+
+participant User identified by aadharId {
+  o String aadharId
+  o String mobileNumber
+  o String name
+  o String emailId
+}
+
+
+
+asset Bike identified by registrationNumber {
+  o String registrationNumber
+  o String make
+  --> User owner
+}
+
+transaction SellVehicle {
+  o Double Price
+  --> User owner
+  --> User buyer
+  --> Bike bike
+}
