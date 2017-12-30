@@ -1,0 +1,24 @@
+/**
+ * Write your model definitions here
+ */
+
+namespace org.qt.blockchain.hyperledger.diamond
+
+participant Member identified by memberId {
+  o String memberId
+  o String mobileNumber
+  o String emailId
+}
+
+asset Diamond identified by diamondId {
+  o String diamondId
+  o String carat
+  --> Member owner
+ }
+
+ transaction SellDiamond {
+   o String description
+   --> Member Seller
+   --> Member Buyer
+   --> Diamond diamond
+ }
