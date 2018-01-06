@@ -1,0 +1,28 @@
+/**
+ * Write your model definitions here
+ */
+
+namespace org.qt.blockchain.hyperledger.mobileport
+
+participant Customer identified by aadharId {
+  o String aadharId
+  o String Address
+}
+
+participant Vendor identified by vendorName {
+  o String vendorName
+}
+
+asset MobileNumber identified by number {
+  o String number
+  --> Customer owner
+  --> Vendor vendor
+}
+
+transaction portMobileNumber {
+  o String transactionDescription
+  --> Customer Customer
+  --> MobileNumber mobileNumber
+  --> Vendor proposedVendor
+}
+
