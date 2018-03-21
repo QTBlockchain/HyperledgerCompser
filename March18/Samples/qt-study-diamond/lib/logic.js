@@ -8,6 +8,7 @@
  * @param {org.qt.hyperledger.samples.diamondnetwork.ChangeAssetValue} changeAssetValue
  * @transaction
  */
+/**
 function onChangeAssetValue(changeAssetValue) {
     var assetRegistry;
     var id = changeAssetValue.relatedAsset.assetId;
@@ -21,3 +22,4 @@ function onChangeAssetValue(changeAssetValue) {
             return assetRegistry.update(asset);
         });
 }
+ */

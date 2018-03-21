@@ -9,7 +9,8 @@ asset Diamond identified by id {
   o Double karat
   o Shape shape optional
   o Color color default="COLORLESS"
-
+  --> Customer owner
+  --> Merchant merchant
 }
 
 // Take info from
@@ -32,3 +33,27 @@ enum Color {
   o VERYLIGHTCOLOR
   o LIGHTCOLOR
 }
+
+abstract participant User identified by aadharId {
+  o String aadharId
+  o String mobileNumber
+  o String emailId
+  o Address address
+}
+
+concept Address {
+  o String flatName
+  o String street optional
+  o String city
+  o String state
+  o String country
+  o String landMark optional
+}
+
+participant Customer extends User {
+}
+
+participant Merchant extends User {
+  o String merchantName
+}
+
