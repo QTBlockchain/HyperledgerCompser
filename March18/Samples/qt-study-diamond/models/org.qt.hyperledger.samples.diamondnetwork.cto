@@ -1,0 +1,34 @@
+/**
+ * Write your model definitions here
+ */
+
+namespace org.qt.hyperledger.samples.diamondnetwork
+
+asset Diamond identified by id {
+  o String id
+  o Double karat
+  o Shape shape optional
+  o Color color default="COLORLESS"
+
+}
+
+// Take info from
+// https://www.lumeradiamonds.com/diamond-education/diamond-shape
+enum Shape {
+  o ROUND
+  o PRINCESS
+  o OVAL
+  o PEAR
+  o CUSHION
+  o EMERALD
+}
+
+// Take info from
+//https://www.lumeradiamonds.com/diamond-education/diamond-color
+enum Color {
+  o COLORLESS
+  o NEARCOLORLESS
+  o FAINTCOLOR
+  o VERYLIGHTCOLOR
+  o LIGHTCOLOR
+}
