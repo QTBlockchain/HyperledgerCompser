@@ -1,0 +1,90 @@
+/**
+ * Write your model definitions here
+ */
+
+namespace org.qt.hyperledger.samples.rto
+
+asset Vehicle identified by registrationNumber {
+  o String registrationNumber
+  o VehicleType type default="HATCHBACK"
+  o Usage usage default="INDIVIDUAL"
+  o Complaint[] complaintsRegistered
+}
+
+asset DrivingLicense identified by licenseId {
+  o String licenseId
+  o DateTime expiryDate 
+  o DateTime issueDate
+  o String rtoIssued optional
+}
+
+abstract participant User identified by aadharId {
+  o String aadharId
+  o String mobileNumber
+  o Address address
+}
+
+ participant RTOEmployee extends User {
+  o String employeeId
+  o String officeId
+}
+
+participant RTOManager extends RTOEmployee {
+}
+
+
+participant Customer extends User {
+}
+
+
+concept Address {
+  o String flatNo  optional
+  o String Street
+  o String City
+  o String State
+}
+
+ concept Complaint {
+   o String id
+   o String description
+   o ComplaintStatus status default="OPEN"
+ }
+
+ enum ComplaintStatus {
+   o OPEN
+   o CLOSED
+   o PENDING
+ }
+
+enum VehicleType {
+  o HATCHBACK
+  o SUV
+  o SEDAN
+  o MUV
+  o TRUCK
+}
+
+enum Usage {
+  o INDIVIDUAL
+  o COMMERCIAL
+}
+
+
+transaction RegisterVehicle {
+  o DateTime registrationDate
+  --> Vehicle Vehicle
+  --> Customer owner
+}
+
+transaction ReSaleVehicle {
+  o DateTime resaleDate
+  --> Vehicle Vehicle
+  --> Customer seller
+  --> Customer buyer  
+}
+
+transaction IssueDrivingLicense {
+  --> Customer applier
+  --> RTOEmployee employee
+  --> DrivingLicense license
+}
