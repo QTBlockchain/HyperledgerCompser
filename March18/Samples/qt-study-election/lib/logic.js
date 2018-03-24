@@ -7,7 +7,7 @@
  * Sample transaction
  * @param {org.qt.hyperledger.samples.election.ChangeAssetValue} changeAssetValue
  * @transaction
- */
+
 function onChangeAssetValue(changeAssetValue) {
     var assetRegistry;
     var id = changeAssetValue.relatedAsset.assetId;
@@ -21,3 +21,4 @@ function onChangeAssetValue(changeAssetValue) {
             return assetRegistry.update(asset);
         });
 }
+ */

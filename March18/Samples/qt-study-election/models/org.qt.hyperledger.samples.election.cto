@@ -54,6 +54,11 @@ participant Contenstant extends User {
   o String Party
 }
 
+participant ElectionOfficer extends User {
+  o String officerId
+  
+}
+
 
 transaction vote {
   o String detail
