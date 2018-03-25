@@ -44,7 +44,7 @@ composer network reset -c PeerAdmin@hlfv1
 composer network ping -c admin@qtdiamondnetwork
 
 
-#For more info on 
+# For more info on 
 Composer Rest Server refer https://hyperledger.github.io/composer/reference/rest-server
 
 Identity & Participants: 
