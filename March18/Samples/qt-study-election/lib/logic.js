@@ -22,3 +22,48 @@ function onChangeAssetValue(changeAssetValue) {
         });
 }
  */
+
+
+ //org.qt.hyperledger.samples.election
+
+ /**
+ * Sample transaction
+ * @param {org.qt.hyperledger.samples.election.StartElection} se
+ * @transaction
+ **/
+function startElection(se) {
+    if (se.election.status == "NOTSTARTED") {
+        se.election.status = "STARTED";
+        return getAssetRegistry('org.qt.hyperledger.samples.election.election')
+            .then(function (ar) {
+                ar.update(se.election); 
+            });
+    }
+}
+
+
+/**
+ * Sample transaction
+ * @param {org.qt.hyperledger.samples.election.StopElection} se
+ * @transaction
+ **/
+function stopElection(se) {
+    if (se.election.status == "STARTED") {
+        se.election.status = "COMPLETED";
+
+        return getAssetRegistry('org.qt.hyperledger.samples.election.election')
+            .then(function (ar) {
+                ar.update(se.election); 
+            });
+    }
+}
+
+
+/**
+ * This function will perform business logic for voting
+ * @param {org.qt.hyperledger.samples.election.vote} v
+ * @transaction
+ **/
+function vote(v) {
+    
+}

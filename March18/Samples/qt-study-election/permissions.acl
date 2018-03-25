@@ -6,6 +6,32 @@ rule electionOfficerPermission {
   action: ALLOW
 }
 
+rule VoterElection {
+  description: "This is for the voter"
+  participant: "org.qt.hyperledger.samples.election.Voter"
+  operation: READ
+  resource: "org.qt.hyperledger.samples.election.election"
+  action: ALLOW
+}
+
+rule Voter {
+  description: "This rule demonstrates permission of voter on his account"
+  participant(p): "org.qt.hyperledger.samples.election.Voter"
+  operation: ALL
+  resource(r): "org.qt.hyperledger.samples.election.Voter"
+  condition: (p.getIdentifier() === r.getIdentifier())
+  action: ALLOW
+}
+
+rule VoterContenstantACL {
+  description: "Description of the Conditional ACL rule"
+  participant(p): "org.qt.hyperledger.samples.election.Voter"
+  operation: ALL
+  resource(r): "org.qt.hyperledger.samples.election.Contenstant"
+  condition: (p.constituency === r.constituency)
+  action: ALLOW
+}
+
 rule SystemACL {
   description:  "System ACL to permit all access"
   participant: "org.hyperledger.composer.system.Participant"
@@ -34,7 +60,7 @@ rule NetworkAdminSystem {
  rule AllAccess {
      description: "AllAccess - grant everything to everybody."
      participant: "org.hyperledger.composer.system.Participant"
-     operation: ALL
+     operation: READ
      resource: "org.hyperledger.composer.system.**"
      action: ALLOW
  }
