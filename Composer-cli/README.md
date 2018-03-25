@@ -36,8 +36,19 @@ composer network update -a ./qtdiamondnetwork@0.0.1.bna -c admin@qtdiamondnetwor
 composer network undeploy  -c admin@qtdiamondnetwork 
 
 
+
 # Reset
 composer network reset -c PeerAdmin@hlfv1
 
 # Ping 
 composer network ping -c admin@qtdiamondnetwork
+
+
+#For more info on 
+Composer Rest Server refer https://hyperledger.github.io/composer/reference/rest-server
+
+Identity & Participants: 
+1. https://hyperledger.github.io/composer/managing/identity-bind.html
+2. https://hyperledger.github.io/composer/managing/participantsandidentities.html
+3. https://hyperledger.github.io/composer/managing/identity-issue
+
