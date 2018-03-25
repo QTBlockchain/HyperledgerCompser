@@ -25,6 +25,11 @@ composer identity issue -u khaja -a org.qt.hyperledger.samples.diamond.Merchant#
 # List the identities
 composer identity list -c admin@qtdiamondnetwork
 
+# Import the Card 
+composer card import -f admin@qtdiamondnetwork.card
+
+note: The card is created in the folder as the result of Step Issue an Identity
+
 
 # Launch REST Server
 composer-rest-server -c admin@qtdiamondnetwork -n always -w true
